@@ -1,0 +1,61 @@
+<!-- olympus-logo.svg by Eduardo Bussien -->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 200 200"
+  role="img"
+  aria-labelledby="title desc"
+>
+  <title>Olympus Archives Logo</title>
+  <desc>Stylized omega and laurel in a circular Greek coin style.</desc>
+
+  <circle cx="100" cy="100" r="96" fill="#f4e8c8" stroke="#3a2b1a" stroke-width="4"/>
+
+  <!-- Inner ring -->
+  <circle cx="100" cy="100" r="78" fill="#e1c78f" stroke="#3a2b1a" stroke-width="2"/>
+
+  <g stroke="#3a2b1a" stroke-width="3" fill="none">
+    <path d="M40 60 h40 v20 h-20 v20" />
+    <path d="M160 60 h-40 v20 h20 v20" />
+    <path d="M40 140 h40 v-20 h-20 v-20" />
+    <path d="M160 140 h-40 v-20 h20 v-20" />
+  </g>
+
+  <g fill="none" stroke="#3a2b1a" stroke-width="2.2" stroke-linecap="round">
+    <path d="M70 65 Q55 100 70 135" />
+    <path d="M66 70 L58 78" />
+    <path d="M64 82 L56 90" />
+    <path d="M64 118 L56 110" />
+    <path d="M66 130 L58 122" />
+  </g>
+
+  <g fill="none" stroke="#3a2b1a" stroke-width="2.2" stroke-linecap="round">
+    <path d="M130 65 Q145 100 130 135" />
+    <path d="M134 70 L142 78" />
+    <path d="M136 82 L144 90" />
+    <path d="M136 118 L144 110" />
+    <path d="M134 130 L142 122" />
+  </g>
+
+  <!-- Omega in the center -->
+  <path
+    d="M80 125
+       Q70 115 70 100
+       Q70 75 86 62
+       Q94 56 100 56
+       Q106 56 114 62
+       Q130 75 130 100
+       Q130 115 120 125
+       L110 125
+       Q122 115 122 100
+       Q122 82 110 72
+       Q106 69 100 69
+       Q94 69 90 72
+       Q78 82 78 100
+       Q78 115 90 125
+       Z"
+    fill="#2b1c10"
+  />
+
+  <!-- Small underline bar -->
+  <rect x="78" y="132" width="44" height="4" fill="#2b1c10" rx="2" />
+</svg>

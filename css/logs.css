@@ -1,0 +1,266 @@
+/* logs.css by Eduardo Bussien */
+/* PROFILE*/
+body.profile-bg {
+  background-image: linear-gradient(to bottom,      
+    rgba(255, 255, 255, 0.7) 70%,   
+      rgba(255, 255, 255, 0.4) 100%, 
+      rgba(255, 255, 255, 0.0) 80%  
+    ), url(../img/back/art4.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; 
+  background-position: center;
+}
+
+body.auth-bg1 {
+  background-image: linear-gradient(to bottom,      
+    rgba(255, 255, 255, 0.7) 100%,  
+      rgba(255, 255, 255, 0.479) 100%, 
+      rgba(255, 255, 255, 0.0) 30%  
+    ), url(../img/back/art3.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; 
+  background-position: center;
+}
+
+body.auth-bg2 {
+  background-image: linear-gradient(to bottom,      
+    rgba(255, 255, 255, 0.774) 100%,   
+      rgba(255, 255, 255, 0.466) 100%, 
+      rgba(255, 255, 255, 0.0) 20%  
+    ), url(../img/back/art1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; 
+  background-position: center;
+}
+
+.profile-page-simple {
+  max-width: 700px;
+  margin: 120px auto 40px;
+  padding: 0 1.5rem;
+  font-family: 'Cinzel', serif;
+}
+
+.profile-card {
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 12px;
+  padding: 2rem 3rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  text-align: left;
+}
+
+.profile-card h2 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.profile-username-simple {
+  margin: 0.3rem 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.profile-joined-simple {
+  margin: 0.2rem 0 0.8rem;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.profile-divider {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 0.8rem 0 1rem;
+}
+
+.profile-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+}
+
+.profile-card p {
+  margin: 0.3rem 0;
+}
+
+.profile-hint {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* === PROFILE PAGE LAYOUT WITH AVATAR === */
+
+.profile-layout {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+
+/* Large circular avatar */
+.profile-avatar-large img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ddd;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+/* Make sure the card stays aligned */
+.profile-card {
+    flex: 1;
+    max-width: 460px;
+}
+
+/* Avatar settings grid */
+.profile-avatar-form {
+    margin-top: 0.6rem;
+}
+
+.profile-avatar-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.profile-avatar-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.profile-avatar-option input {
+    margin-bottom: 0.25rem;
+}
+
+/* Save button */
+.profile-save-btn {
+    margin-top: 0.8rem;
+    padding: 0.4rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid #d4af37;
+    background: rgba(212, 175, 55, 0.12);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+}
+
+.profile-save-btn:hover {
+    background: rgba(212, 175, 55, 0.22);
+}
+
+/* Center entire content on very small screens */
+@media (max-width: 700px) {
+    .profile-layout {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-card {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* LOGIN & REGISTER */
+.auth-page {
+  padding-top: 120px;
+  max-width: 500px;
+  margin: 0 auto 40px;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+}
+
+.auth-page h2 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.auth-intro {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0;
+}
+
+.auth-form {
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.96);
+  padding: 1.5rem 1.6rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  text-align: left;
+}
+
+.auth-form label {
+  display: block;
+  margin: 0.4rem 0 0.15rem;
+  font-weight: 600;
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="email"],
+.auth-form input[type="password"],
+.auth-form select {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 0.7rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.auth-form button[type="submit"] {
+  width: 100%;
+  margin-top: 0.4rem;
+  padding: 0.6rem 1rem;
+  background-color: #EFBF04;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.auth-form button[type="submit"]:hover {
+  background-color: #d9aa00;
+  transform: translateY(-1px);
+}
+
+.auth-error {
+  color: darkred;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.auth-helper {
+  margin-top: 25px;
+  font-size: 0.9rem;
+  font-family: sans-serif;
+}
+
+.auth-helper a {
+  color: #000;
+  text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+  .auth-page {
+    padding-top: 110px;
+    padding-inline: 1rem;
+    margin-bottom: 30px;
+  }
+
+  .profile-page-simple {
+    margin-top: 110px;
+    padding: 0 1rem;
+  }
+}

@@ -1,0 +1,241 @@
+/* games.css by Eduardo Bussien */
+body.which-god-bg {
+  background-image: linear-gradient(to bottom,      
+    rgba(255, 255, 255, 0.7) 0%,  
+      rgba(255, 255, 255, 0.4) 60%, 
+      rgba(255, 255, 255, 0.0) 95%  
+    ), url(../img/back/indexback.png);
+}
+
+body.trivia-bg {
+  background-image: linear-gradient(to bottom,      
+    rgba(255, 255, 255, 0.7) 10%,   
+      rgba(255, 255, 255, 0.4) 40%, 
+      rgba(255, 255, 255, 0.0) 80%  
+    ), url(../img/back/index2.png);
+
+}
+
+/* ============= GAME PAGES SHARED STYLES ============= */
+
+.game-page {
+  max-width: 900px;
+  margin: 160px auto 60px;
+  padding: 0 1.5rem 40px;
+  font-family: 'Cinzel', serif;
+}
+
+.game-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.game-header h2 {
+  margin-bottom: 0.3rem;
+  font-size: 3rem;
+}
+
+.game-intro {
+  font-size: 0.95rem;
+  color: #555;
+  padding: 0 3rem;
+}
+
+/* ============= TRIVIA CARD ============= */
+
+.game-card {
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 12px;
+  padding: 1.6rem 2.5rem;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.192);
+}
+
+.trivia-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.trivia-question p {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.trivia-options {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* answer choice buttons */
+.trivia-option-btn {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  background: #f7f7f7;
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s, transform 0.05s, border-color 0.2s;
+}
+
+.trivia-option-btn:hover {
+  background: #f0f0f0;
+  transform: translateY(-1px);
+}
+
+.trivia-option-btn.selected {
+  border-color: #EFBF04;
+  background: #fff7d1;
+}
+
+/* correct/incorrect feedback colors */
+.trivia-option-btn.correct {
+  border-color: #2d8a34;
+  background: #e4f8e5;
+}
+
+.trivia-option-btn.incorrect {
+  border-color: #b3261e;
+  background: #fde2e0;
+}
+
+.trivia-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+}
+
+/* generic game buttons */
+.game-btn {
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: #EFBF04;
+  color: #000;
+  transition: background-color 0.2s, transform 0.05s;
+}
+
+.game-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+  transform: none;
+}
+
+.game-btn:not(:disabled):hover {
+  background-color: #d9aa00;
+  transform: translateY(-1px);
+}
+
+.game-btn.secondary {
+  background-color: #222;
+  color: #fff;
+}
+
+.game-btn.secondary:hover {
+  background-color: #444;
+}
+
+.trivia-feedback {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+}
+
+/* result card */
+
+.trivia-result {
+  margin-top: 2rem;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 12px;
+  padding: 1.3rem 1.6rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.11);
+  text-align: center;
+}
+
+.trivia-result h3 {
+  margin-top: 0;
+}
+
+.which-god-page .trivia-result h4 {
+  margin: 0.4rem 0 0.6rem;
+  font-size: 1.4rem;
+}
+
+
+/* games.php*/
+.gameshub-page {
+  padding: 8rem 2rem 4rem;
+  text-align: center;
+  background-image: linear-gradient(to bottom,      
+    rgba(255, 255, 255, 0.89) 70%,   
+      rgba(255, 255, 255, 0.4) 100%, 
+      rgba(255, 255, 255, 0.555) 80%  
+    ), url(../img/back/olympus.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; 
+  background-position: center;
+}
+
+.gameshub-title h1 {
+  font-size: 4rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.gameshub-title p {
+  margin-top: 0.6rem;
+  font-size: 1rem;
+  opacity: 0.75;
+  font-family: sans-serif;
+}
+
+.gameshub-grid {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.gameshub-card {
+  display: block;
+  width: 280px;
+  padding: 1rem;
+  text-decoration: none;
+  color: black;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gameshub-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.25);
+}
+
+.gameshub-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.gameshub-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.gameshub-card p {
+  font-family: sans-serif;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}

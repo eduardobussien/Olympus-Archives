@@ -1,0 +1,458 @@
+/* myths.css by Eduardo Bussien */
+
+.myths-page {
+  padding-top: 100px;
+  padding-bottom: 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Cinzel', serif;
+}
+
+/* Full-page background for myths */
+body.myths-bg {
+  background-image: linear-gradient(to bottom,      
+    rgba(255, 255, 255, 0.7) 0%,  
+      rgba(255, 255, 255, 0.4) 40%, 
+      rgba(255, 255, 255, 0.0) 80% 
+    ), url(../img/back/bg5.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; 
+  background-position: center;
+}
+
+
+.myths-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.myths-header h2 {
+  font-size: 3.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.myths-header p {
+  font-family: 'GFS Neohellenic', serif;
+  font-size: 1rem;
+  color: #444;
+  font-style: italic;
+  margin-bottom: 2.1rem;
+}
+
+.myth-category-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.myth-category-tabs a {
+  text-decoration: none;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  font-family: 'GFS Neohellenic', serif;
+  color: #444;
+  background: #00000034;
+  transition: all 0.25s ease;
+}
+
+.myth-category-tabs a:hover {
+  border-color: #b6b6b6d3;
+  box-shadow: 0 0 8px rgba(228, 217, 174, 0.4);
+}
+
+.myth-category-tabs a.active {
+  background: #EFBF04;
+  color: #111;
+  border-color: #b6b6b6;
+}
+
+.myths-layout {
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+
+/* BIG HIGHLIGHT CARD */
+.myth-highlight-card {
+  display: flex;
+  align-items: stretch;     
+  max-width: 1100px;
+  margin: 2rem auto 3rem;
+  background: #f4f0e8;
+  border-radius: 16px;
+  overflow: hidden;            
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.295);
+}
+
+
+.myth-highlight-image {
+  flex: 0 0 420px;            
+  display: flex;          
+}
+
+.myth-highlight-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;              
+  display: block;
+}
+
+.myth-highlight-content {
+  flex: 1;
+  padding: 2.4rem 2.8rem 2.6rem;
+}
+
+
+.myth-category-label {
+  font-size: 0.85rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #7c6b46;
+  margin-bottom: 0.4rem;
+}
+
+.myth-title {
+  font-size: 1.7rem;
+  margin-bottom: 0.4rem;
+}
+
+.myth-tagline {
+  font-family: 'GFS Neohellenic', serif;
+  font-style: italic;
+  color: #444;
+  margin-bottom: 0.9rem;
+}
+
+.myth-excerpt {
+  font-family: 'GFS Neohellenic', serif;
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: #2d2d2d;
+  margin-bottom: 0.9rem;
+}
+
+.myth-characters {
+  font-family: 'GFS Neohellenic', serif;
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1.2rem;
+}
+
+.myth-characters span {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  margin-right: 4px;
+}
+
+.myth-carousel {
+  margin-top: 0.5rem;
+  padding: 1rem 2rem 0.5rem;
+    background-color: #f4f0e8e8;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.068);
+}
+
+.myth-carousel h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #333;
+  text-align: center;
+}
+
+/* Scrolling row */
+.myth-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  gap: 1.2rem;
+  scrollbar-width: auto;
+  scrollbar-color: #141414 #f0f0f0;
+}
+
+/* Chrome scrollbar */
+.myth-scroll-container::-webkit-scrollbar {
+  height: 9px;
+}
+.myth-scroll-container::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+.myth-scroll-container::-webkit-scrollbar-thumb {
+  background: #EFBF04;
+  border-radius: 10px;
+}
+
+/* Each card in the row */
+.myth-scroll-item {
+  min-width: 200px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.myth-scroll-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Thumbnail */
+.myth-scroll-item img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Title */
+.myth-scroll-item p {
+  margin-top: 0.4rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  font-style: bold;
+}
+
+/* Reuse btn style but ensure no underline */
+.myth-btn {
+  display: inline-block;
+  text-decoration: none;
+  background: #EFBF04;
+  color: #111;
+  font-weight: 700;
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+  border: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.myth-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.24);
+  background: #ffe37a;
+}
+
+/* ===== RIGHT: LIST PANEL ===== */
+.myth-list-panel {
+  background: #f8f8f8;
+  border-radius: 18px;
+  border: 1px solid #ddd;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  padding: 1.3rem 1.1rem 1.4rem;
+  max-height: 560px;
+  display: flex;
+  flex-direction: column;
+}
+
+.myth-list-title {
+  text-align: center;
+  font-size: 1.1rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.myth-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.myth-list-item {
+  margin-bottom: 0.55rem;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* default item appearance */
+.myth-list-item a {
+  display: block;
+  padding: 0.7rem 0.9rem;
+  text-decoration: none;
+  color: #222;
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
+}
+
+.myth-list-name {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.myth-list-summary {
+  display: block;
+  font-family: 'GFS Neohellenic', serif;
+  font-size: 0.82rem;
+  color: #666;
+  margin-top: 0.15rem;
+}
+
+/* hover / active */
+.myth-list-item a:hover {
+  background: #fffdf5;
+  border-color: #EFBF04;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.14);
+  transform: translateY(-1px);
+}
+
+.myth-list-item.active a {
+  background: #EFBF04;
+  color: #111;
+  border-color: #EFBF04;
+}
+
+.myth-list-item.active .myth-list-summary {
+  color: #222;
+}
+
+/* ===== MYTH DETAIL PAGE ===== */
+.myth-detail-page {
+  padding-top: 160px;
+  padding-bottom: 50px;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.myth-detail-hero {
+  display: grid;
+  grid-template-columns: minmax(260px, 320px) 1.4fr;
+  gap: 1.8rem;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.myth-detail-image {
+  padding: 0;
+  background: #faf7f0;
+  border: 3px solid #d4c7a1;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+
+.myth-detail-image img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+  display: block;
+  filter: contrast(1.1) saturate(0.4);
+}
+
+
+.myth-detail-heading h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.myth-detail-heading .myth-tagline {
+  margin-bottom: 0.7rem;
+}
+
+.myth-detail-body {
+  margin-top: 3rem;
+}
+
+.myth-story-card {
+  background: #f7f4ee;
+  border-radius: 18px;
+  border: 1px solid #d2cbc0;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+  padding: 1.7rem 1.8rem;
+}
+
+.myth-story-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.myth-story-card p {
+  font-family: 'GFS Neohellenic', serif;
+  font-size: 1rem;
+  line-height: 1.9;
+  color: #262626;
+}
+
+/* back button */
+.back-btn {
+  margin-top: 3rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .myths-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .myth-list-panel {
+    max-height: none;
+  }
+
+  .myth-detail-hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .myths-page,
+  .myth-detail-page {
+    padding: 100px 1rem 50px;
+  }
+}
+
+/* ===== Myth detail buttons row (Back + Favourite) ===== */
+.myth-buttons-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+/* keep form tight so it doesn't add extra space */
+.fav-form {
+  margin: 0;
+}
+
+/* Black Favourite pill button */
+.fav-btn {
+  background: #000;
+  color: #fff;
+  border: 2px solid #000;
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-top: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.fav-btn:hover {
+  background: #fff;
+  color: #000;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.24);
+}
