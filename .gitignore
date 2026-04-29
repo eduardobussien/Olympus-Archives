@@ -1,18 +1,43 @@
 # OS files
 .DS_Store
 Thumbs.db
+desktop.ini
 
 # IDE folders
 .vscode/
 .idea/
+*.code-workspace
+*.swp
+*~
+
+# Local tooling / editor caches
+.claude/
+.cursor/
+.copilot/
+.aider*
 
 # Logs
 *.log
+error_log
+access_log
 
 # Node / PHP future-proof
 node_modules/
 vendor/
+composer.phar
+composer.lock
 
 # Environment / secrets
 .env
+.env.*
+*.local
 db.local.php
+
+# Database dumps and backups
+*.sql.bak
+*.sqlite
+*.sqlite3
+
+# Local backup folders
+*_old_backup/
+backup/
