@@ -25,9 +25,10 @@ session_start();
 
     <main class="game-page which-god-page">
         <section class="game-header">
+            <span class="game-eyebrow">Personality Quiz</span>
             <h2>Which God Are You?</h2>
             <p class="game-intro">
-                Answer 10 questions and discover which Greek god or goddess matches your personality.
+                Answer ten questions and discover which Greek deity shares your spirit.
             </p>
         </section>
 
@@ -63,6 +64,7 @@ session_start();
 
     <?php include 'footer.php'; ?>
 
+    <script src="../js/scripts.js"></script>
     <script src="../js/which-god.js"></script>
 </body>
 </html>

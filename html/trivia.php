@@ -24,9 +24,10 @@ session_start();
     <?php include 'nav.php'; ?>
     <main class="game-page trivia-page">
         <section class="game-header">
+            <span class="game-eyebrow">Knowledge Test</span>
             <h2>Trivia Challenge</h2>
             <p class="game-intro">
-                Test your knowledge of Greek mythology with a quick 5-question quiz.
+                Prove your mastery of mythology, heroes, monsters, and ancient legends.
             </p>
         </section>
 
@@ -62,6 +63,7 @@ session_start();
 
     <?php include 'footer.php'; ?>
 
+    <script src="../js/scripts.js"></script>
     <script src="../js/trivia.js"></script>
 </body>
 </html>

@@ -456,3 +456,64 @@ body.myths-bg {
   transform: translateY(-1px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.24);
 }
+
+/* ===== EXPANDED MYTH STORY (myth.php) ===== */
+.myth-story-card .myth-lead::first-letter {
+  font-family: 'Cinzel', serif;
+  font-size: 3.6rem;
+  font-weight: 700;
+  float: left;
+  line-height: 0.95;
+  margin: 0.2rem 0.6rem 0 0;
+  color: #b48b1f;
+}
+
+.myth-story-card p {
+  font-family: 'GFS Neohellenic', serif;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: #1E1E1E;
+  margin: 0 0 1rem;
+  text-align: left;
+}
+
+.myth-story-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* Ancient Sources panel for myths */
+.myth-sources {
+  max-width: 880px;
+  margin: 1.5rem auto 0;
+  padding: 1.4rem 1.7rem;
+  background: #f4ead4;
+  border-left: 3px solid #b48b1f;
+  border-radius: 4px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.myth-sources h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #b48b1f;
+  margin: 0 0 0.7rem;
+}
+
+.myth-sources ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.myth-sources li {
+  font-family: 'GFS Neohellenic', serif;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: #3a3025;
+  padding: 0.35rem 0;
+  border-bottom: 1px dashed rgba(180, 139, 31, 0.3);
+}
+
+.myth-sources li:last-child { border-bottom: none; }

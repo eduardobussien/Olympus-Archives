@@ -11,7 +11,13 @@ if (session_status() === PHP_SESSION_NONE) {
       <h1 class="site-title"><a href="../index.php">Olympus Archives</a></h1>
     </div>
 
-    <ul class="nav-links">
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+
+    <ul class="nav-links" id="primary-nav">
       <li><a href="../index.php">Home</a></li>
 
       <li class="dropdown">
@@ -42,17 +48,43 @@ if (session_status() === PHP_SESSION_NONE) {
         <ul class="dropdown-content">
           <li><a href="which-god.php">Which God Are You?</a></li>
           <li><a href="trivia.php">Trivia Challenge</a></li>
+          <li><a href="memory.php">Memory of the Gods</a></li>
+          <hr>
+          <li><a href="games.php"><strong>View All</strong></a></li>
         </ul>
       </li>
     </ul>
 
     <div class="nav-right">
+      <div class="nav-search">
+        <button type="button" class="nav-search-toggle" aria-label="Search the archives" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+            <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
+            <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <form class="nav-search-panel" action="search.php" method="get" role="search">
+          <input
+            type="text"
+            name="q"
+            placeholder="Search gods, myths, heroes..."
+            autocomplete="off"
+            aria-label="Search query"
+          />
+          <button type="submit" aria-label="Submit search">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+              <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
+              <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+
       <div class="dropdown more-dropdown">
         <a href="#">More ▾</a>
         <ul class="dropdown-content">
           <li><a href="about.php">About</a></li>
           <li><a href="contact.php">Contact</a></li>
-          <li><a href="tech.php">Technology Used</a></li>
         </ul>
       </div>
 

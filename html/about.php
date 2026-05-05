@@ -1,12 +1,22 @@
-<!-- about.php by Eduardo Bussien -->
 <?php
+// about.php by Eduardo Bussien
 session_start();
+require_once __DIR__ . '/../sql/db.php';
+
+$charCount = 0;
+$mythCount = 0;
+$res = $conn->query("SELECT COUNT(*) AS c FROM characters");
+if ($res) { $charCount = (int) $res->fetch_assoc()['c']; }
+$res = $conn->query("SELECT COUNT(*) AS c FROM myths");
+if ($res) { $mythCount = (int) $res->fetch_assoc()['c']; }
+$conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="About Olympus Archives - a digital library devoted to Greek mythology, built by Eduardo Bussien." />
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet" />
 
     <link rel="icon" type="image/x-icon" href="../img/favicon/favicon.ico">
@@ -20,104 +30,140 @@ session_start();
   </head>
 
   <body class="about-bg">
-    <?php include 'nav.php'; ?> 
+    <?php include 'nav.php'; ?>
 
-    <main class="about-main">
+    <main class="about-main-v2">
+
       <!-- HERO -->
-      <section class="about-hero">
-        <div class="about-hero-inner">
-          <h1>About Olympus Archives</h1>
+      <section class="about-hero-v2">
+        <span class="about-eyebrow">A Digital Library</span>
+        <h1>About Olympus Archives</h1>
+        <p class="about-hero-sub">
+          A sanctuary for the gods, heroes, monsters, and myths of ancient Greece -
+          part archive, part interactive companion, built with care for storytelling
+          and the craft behind it.
+        </p>
+      </section>
+
+      <!-- STATS -->
+      <section class="about-stats">
+        <div class="about-stat">
+          <div class="num"><?= $charCount; ?></div>
+          <div class="lbl">Legendary Figures</div>
+        </div>
+        <div class="about-stat-divider" aria-hidden="true"></div>
+        <div class="about-stat">
+          <div class="num"><?= $mythCount; ?></div>
+          <div class="lbl">Eternal Myths</div>
+        </div>
+        <div class="about-stat-divider" aria-hidden="true"></div>
+        <div class="about-stat">
+          <div class="num">3</div>
+          <div class="lbl">Interactive Games</div>
+        </div>
+      </section>
+
+      <!-- ORNAMENT -->
+      <div class="about-ornament" aria-hidden="true">❦</div>
+
+      <!-- MISSION -->
+      <section class="about-section-v2">
+        <div class="about-col-narrow">
+          <span class="about-section-eyebrow">Mission</span>
+          <h2>Why Olympus Archives</h2>
           <p>
-            A digital sanctuary devoted to the gods, heroes, monsters, and myths of ancient Greece.
+            The myths of Greece are some of the oldest, strangest, and most
+            beautifully human stories ever told. They explain the seasons, the stars,
+            the sea - and the failings and triumphs of the people who tried to live
+            beneath them. Olympus Archives exists to make those stories easy to find,
+            pleasant to read, and worthy of the art that has carried them this far.
+          </p>
+          <p>
+            This is a living project. New characters, new myths, and new games are
+            added as the work progresses, with citations to the ancient sources so
+            anyone who wants to read further can.
           </p>
         </div>
       </section>
 
-      <!-- CONTENT CARD -->
-      <section class="about-content">
-        <div class="about-section">
-          <h2>Purpose</h2>
-          <p>
-            Olympus Archives is a digital library dedicated to exploring and celebrating Greek mythology. 
-            From the creation of the world to the rise of the Olympians, every tale reflects the beauty, 
-            complexity, and imagination of ancient storytellers. This project brings those timeless legends 
-            into an interactive, visual space - a place where history meets technology.
-          </p>
-        </div>
+      <!-- WHAT YOU'LL FIND -->
+      <section class="about-section-v2 about-section-grid">
+        <span class="about-section-eyebrow centered">What You'll Find</span>
+        <h2 class="centered">Three Halls of the Archive</h2>
 
-        <div class="about-section">
-          <h2>What You'll Find</h2>
-          <ul>
-            <li>
-              <strong><a href="characters.php">Characters</a>:</strong>
-              Detailed profiles of gods, titans, heroes, and monsters - including domains, symbols, and stories.
-            </li>
-            <li>
-              <strong><a href="myths.php">Myths</a>:</strong>
-              Epic tales of love, betrayal, courage, and tragedy that shaped ancient Greek culture.
-            </li>
-            <li>
-              <strong><a href="games.php">Games &amp; Quizzes</a>:</strong>
-              A playful way to test your knowledge or discover which god you resemble.
-            </li>
-          </ul>
-        </div>
-
-        <!-- VIDEO SECTION (HTML5 VIDEO + YOUTUBE LINK) -->
-        <div class="about-section about-video-section">
-          <h2>Learn Through Perspective</h2>
-          <p>
-            Check out this AI generated video! It shows how life back in Greece could have looked like.
-          </p>
-
-        <div class="about-video-wrapper">
-          <video controls muted class="about-video">
-            <source src="../vid/intro-mythology.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-
-
-          <p class="about-video-note">
-            Inspired by ancient Greece - created with AI to visualize the world of myth and legend.
-          </p>
-
-        </div>
-
-        <div class="about-section">
-          <h2>The Vision Behind the Project</h2>
-          <p>
-            Created by <strong>Eduardo Bussien</strong>, Olympus Archives was built as a passion project to merge storytelling,
-            art, and software development. It serves as both an educational tool and a tribute to mythology's timeless
-            influence on literature, art, and imagination.
-          </p>
-          <p>
-            Every section of the site - from the gods' family connections to the curated myths and quizzes - was designed
-            to spark curiosity and appreciation for the ancient world.
-          </p>
-        </div>
-
-        <div class="about-section">
-          <h2>Technology Used</h2>
-          <p>
-            Olympus Archives is powered by HTML5, CSS, JavaScript, and PHP, with a MySQL database managing characters,
-            myths, and user profiles. From animated slideshows to interactive quizzes, each component was crafted to make
-            Greek mythology feel alive and approachable.
-          </p>
-          <a href="tech.php" class="tech-text-link">
-            Explore the technologies behind Olympus Archives &gt;
+        <div class="about-feature-grid">
+          <a class="about-feature-card" href="characters.php">
+            <h3>Characters</h3>
+            <p>Profiles of gods, titans, heroes, and monsters - domains, symbols, biographies, and the ancient sources that shaped them.</p>
+            <span class="about-link">Explore →</span>
+          </a>
+          <a class="about-feature-card" href="myths.php">
+            <h3>Myths</h3>
+            <p>Creation stories, heroic quests, and tragedies - full retellings of the legends that defined the ancient Greek imagination.</p>
+            <span class="about-link">Read →</span>
+          </a>
+          <a class="about-feature-card" href="games.php">
+            <h3>Games</h3>
+            <p>Three interactive challenges - discover your divine match, test your knowledge, and train your memory among the Olympians.</p>
+            <span class="about-link">Play →</span>
           </a>
         </div>
+      </section>
 
-        <div class="about-section">
-          <h2>The Goal</h2>
+      <!-- ORNAMENT -->
+      <div class="about-ornament" aria-hidden="true">❦</div>
+
+      <!-- VIDEO -->
+      <section class="about-section-v2">
+        <div class="about-col-narrow">
+          <span class="about-section-eyebrow">A Glimpse of the World</span>
+          <h2>Greece Through Imagination</h2>
           <p>
-            The goal of Olympus Archives is to make the stories of Olympus accessible to everyone - students, fans, and
-            mythology enthusiasts around the world. Whether you're researching a specific god, tracing the genealogy of
-            the Titans, or simply exploring for fun, this archive is your gateway into the imagination of the ancient Greeks.
+            This short film, generated with AI tooling, offers a visual glimpse of
+            what daily life in ancient Greece may have looked like - the marble, the
+            shadow, the light. It is included as inspiration, not as historical record.
+          </p>
+
+          <div class="about-video-wrapper-v2">
+            <video controls muted class="about-video-v2" preload="metadata">
+              <source src="../vid/intro-mythology.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <p class="about-video-note-v2">
+            Inspired by ancient Greece - created with AI to visualize the world of myth and legend.
           </p>
         </div>
       </section>
+
+      <!-- BEHIND THE PROJECT -->
+      <section class="about-section-v2 about-credit">
+        <div class="about-col-narrow">
+          <span class="about-section-eyebrow">Behind the Project</span>
+          <h2>Built by Eduardo Bussien</h2>
+          <p>
+            Olympus Archives began as a passion project at the intersection of
+            storytelling, art, and software. Every page - from the family trees of
+            the Olympians to the curated myths and quizzes - was designed to spark
+            curiosity and respect for the ancient world.
+          </p>
+          <p>
+            The site is powered by HTML, CSS, JavaScript, PHP, and MySQL -
+            a full-stack approach combining clean markup, expressive styling,
+            and database-driven content.
+          </p>
+        </div>
+      </section>
+
+      <!-- CTA STRIP -->
+      <section class="about-cta-strip">
+        <h2>Begin your journey through the archives</h2>
+        <div class="about-cta-actions">
+          <a href="characters.php" class="btn">Meet the Gods</a>
+          <a href="myths.php" class="btn-ghost">Read the Myths</a>
+        </div>
+      </section>
+
     </main>
 
     <?php include 'footer.php'; ?>

@@ -1,266 +1,505 @@
 /* logs.css by Eduardo Bussien */
-/* PROFILE*/
+
+/* =====================================================
+   PROFILE BACKGROUND
+   ===================================================== */
 body.profile-bg {
-  background-image: linear-gradient(to bottom,      
-    rgba(255, 255, 255, 0.7) 70%,   
-      rgba(255, 255, 255, 0.4) 100%, 
-      rgba(255, 255, 255, 0.0) 80%  
-    ), url(../img/back/art4.jpg);
+  background:
+    linear-gradient(180deg,
+      rgba(250, 244, 230, 0.92) 0%,
+      rgba(244, 234, 212, 0.94) 100%),
+    url(../img/back/art4.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed; 
+  background-attachment: fixed;
   background-position: center;
+  min-height: 100vh;
 }
 
+/* =====================================================
+   AUTH BACKGROUNDS (login / register)
+   ===================================================== */
 body.auth-bg1 {
-  background-image: linear-gradient(to bottom,      
-    rgba(255, 255, 255, 0.7) 100%,  
-      rgba(255, 255, 255, 0.479) 100%, 
-      rgba(255, 255, 255, 0.0) 30%  
-    ), url(../img/back/art3.jpg);
+  background:
+    linear-gradient(180deg,
+      rgba(15, 12, 8, 0.55) 0%,
+      rgba(15, 12, 8, 0.78) 100%),
+    url(../img/back/art3.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed; 
+  background-attachment: fixed;
   background-position: center;
+  min-height: 100vh;
 }
 
 body.auth-bg2 {
-  background-image: linear-gradient(to bottom,      
-    rgba(255, 255, 255, 0.774) 100%,   
-      rgba(255, 255, 255, 0.466) 100%, 
-      rgba(255, 255, 255, 0.0) 20%  
-    ), url(../img/back/art1.jpg);
+  background:
+    linear-gradient(180deg,
+      rgba(15, 12, 8, 0.55) 0%,
+      rgba(15, 12, 8, 0.78) 100%),
+    url(../img/back/art1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed; 
+  background-attachment: fixed;
   background-position: center;
+  min-height: 100vh;
 }
 
+/* =====================================================
+   PROFILE PAGE
+   ===================================================== */
 .profile-page-simple {
-  max-width: 700px;
-  margin: 120px auto 40px;
-  padding: 0 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 7rem 1.5rem 4rem;
   font-family: 'Cinzel', serif;
 }
 
+.profile-page-simple .profile-eyebrow {
+  display: block;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: #b48b1f;
+  margin-bottom: 1rem;
+}
+
+.profile-page-simple > h1 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2rem, 4.4vw, 2.8rem);
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: #1E1E1E;
+  margin: 0 0 0.5rem;
+}
+
+.profile-page-simple > h1::after {
+  content: "";
+  display: block;
+  width: 90px;
+  height: 2px;
+  margin: 1rem auto 2rem;
+  background: linear-gradient(to right, transparent, #EFBF04, transparent);
+}
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 280px) 1fr;
+  align-items: start;
+  gap: 2.5rem;
+  margin-top: 1.5rem;
+}
+
+.profile-avatar-large {
+  position: relative;
+  background: #faf6ec;
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  border-radius: 14px;
+  padding: 1.4rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+  text-align: center;
+}
+
+.profile-avatar-large::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.profile-avatar-large img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 200px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 10px;            /* squared off, matching the parchment card aesthetic */
+  border: 3px solid #d4af37;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.22);
+  display: block;
+  margin: 0 auto;
+}
+
 .profile-card {
-  background: rgba(255, 255, 255, 0.96);
-  border-radius: 12px;
-  padding: 2rem 3rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  background: #faf6ec;
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  border-radius: 14px;
+  padding: 2rem 2.4rem 2.2rem;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.14);
   text-align: left;
+  position: relative;
+}
+
+.profile-card::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.profile-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .profile-card h2 {
   margin: 0;
-  font-size: 1.8rem;
+  font-family: 'Cinzel', serif;
+  font-size: 1.9rem;
+  letter-spacing: 0.04em;
+  color: #1E1E1E;
 }
 
 .profile-username-simple {
-  margin: 0.3rem 0;
-  color: #555;
-  font-size: 0.95rem;
+  margin: 0.3rem 0 0;
+  color: #b48b1f;
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 .profile-joined-simple {
-  margin: 0.2rem 0 0.8rem;
-  color: #777;
-  font-size: 0.9rem;
+  margin: 0.3rem 0 0.8rem;
+  color: #6e6354;
+  font-family: 'GFS Neohellenic', serif;
+  font-style: italic;
+  font-size: 0.92rem;
 }
 
 .profile-divider {
   border: none;
-  border-top: 1px solid #ddd;
-  margin: 0.8rem 0 1rem;
+  border-top: 1px solid rgba(180, 139, 31, 0.3);
+  margin: 1.2rem 0 1rem;
 }
 
 .profile-card h3 {
-  margin-top: 0;
-  margin-bottom: 0.6rem;
+  margin: 0 0 0.7rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #b48b1f;
 }
 
 .profile-card p {
   margin: 0.3rem 0;
+  font-family: 'GFS Neohellenic', serif;
+  font-size: 1rem;
+  color: #2b2b2b;
+  line-height: 1.55;
+}
+
+.profile-card p strong {
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #1E1E1E;
+  margin-right: 0.4rem;
 }
 
 .profile-hint {
-  margin-top: 1rem;
+  margin-top: 0.8rem;
+  font-family: 'GFS Neohellenic', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  font-style: italic;
+  color: #8a7d5a;
+  line-height: 1.45;
+  opacity: 0.85;
+}
+
+/* Settings (collapsed avatar picker) */
+.profile-settings summary {
+  cursor: pointer;
+  font-family: 'Cinzel', serif;
   font-size: 0.85rem;
-  color: #666;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #1E1E1E;
+  padding: 0.5rem 0;
+  list-style: none;
+  user-select: none;
 }
 
-/* === PROFILE PAGE LAYOUT WITH AVATAR === */
+.profile-settings summary::-webkit-details-marker { display: none; }
 
-.profile-layout {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 2.5rem;
-    margin-top: 2rem;
+.profile-settings summary::before {
+  content: "▸  ";
+  color: #b48b1f;
+  display: inline-block;
+  transition: transform 0.2s ease;
 }
 
-/* Large circular avatar */
-.profile-avatar-large img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid #ddd;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+.profile-settings[open] summary::before {
+  content: "▾  ";
 }
 
-/* Make sure the card stays aligned */
-.profile-card {
-    flex: 1;
-    max-width: 460px;
-}
-
-/* Avatar settings grid */
 .profile-avatar-form {
-    margin-top: 0.6rem;
+  margin-top: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
-.profile-avatar-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
+.profile-avatar-form label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #5a4f33;
 }
 
-.profile-avatar-option {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 0.8rem;
-    cursor: pointer;
+.profile-avatar-form select {
+  padding: 0.6rem 0.8rem;
+  font-family: 'GFS Neohellenic', serif;
+  font-size: 1rem;
+  border: 1px solid rgba(180, 139, 31, 0.5);
+  border-radius: 6px;
+  background: #fffaf0;
+  cursor: pointer;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.profile-avatar-option input {
-    margin-bottom: 0.25rem;
+.profile-avatar-form select:focus {
+  outline: none;
+  border-color: #EFBF04;
+  box-shadow: 0 0 0 2px rgba(239, 191, 4, 0.32);
 }
 
-/* Save button */
 .profile-save-btn {
-    margin-top: 0.8rem;
-    padding: 0.4rem 1.1rem;
-    border-radius: 999px;
-    border: 1px solid #d4af37;
-    background: rgba(212, 175, 55, 0.12);
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    cursor: pointer;
+  align-self: flex-start;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid #EFBF04;
+  background: #EFBF04;
+  color: #1E1E1E;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s ease,
+              transform 0.15s ease,
+              box-shadow 0.25s ease;
 }
 
 .profile-save-btn:hover {
-    background: rgba(212, 175, 55, 0.22);
+  background: #ffda3d;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
-/* Center entire content on very small screens */
 @media (max-width: 700px) {
-    .profile-layout {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .profile-card {
-        width: 100%;
-        text-align: center;
-    }
+  .profile-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: center;
+  }
+  .profile-card { text-align: left; }
 }
 
-/* LOGIN & REGISTER */
+/* =====================================================
+   LOGIN / REGISTER (auth pages)
+   ===================================================== */
 .auth-page {
-  padding-top: 120px;
-  max-width: 500px;
-  margin: 0 auto 40px;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 7rem 1.5rem 4rem;
   text-align: center;
   font-family: 'Cinzel', serif;
 }
 
+.auth-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: #EFBF04;
+  margin-bottom: 1rem;
+}
+.auth-eyebrow::before,
+.auth-eyebrow::after {
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: rgba(239, 191, 4, 0.85);
+}
+
 .auth-page h2 {
-  margin-bottom: 2rem;
-  font-size: 2rem;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2rem, 4.4vw, 2.6rem);
+  letter-spacing: 0.06em;
+  color: #fffaf0;
+  margin: 0;
+  text-shadow: 0 4px 24px rgba(0,0,0,0.6);
+}
+
+.auth-page h2::after {
+  content: "";
+  display: block;
+  width: 90px;
+  height: 2px;
+  margin: 1rem auto 1.6rem;
+  background: linear-gradient(to right, transparent, #EFBF04, transparent);
 }
 
 .auth-intro {
-  font-size: 0.9rem;
-  color: #666;
-  margin-top: 0;
+  font-family: 'GFS Neohellenic', serif;
+  font-size: 1.02rem;
+  font-style: italic;
+  color: #d8d0bf;
+  margin: 0 0 1.5rem;
 }
 
 .auth-form {
-  margin-top: 20px;
-  background: rgba(255, 255, 255, 0.96);
-  padding: 1.5rem 1.6rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  position: relative;
+  margin-top: 1rem;
+  background: rgba(15, 12, 8, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  padding: 2rem 2rem 1.8rem;
+  border-radius: 6px;
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 230, 150, 0.18) inset;
   text-align: left;
+}
+
+.auth-form::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.32);
+  pointer-events: none;
+  border-radius: 4px;
 }
 
 .auth-form label {
   display: block;
-  margin: 0.4rem 0 0.15rem;
+  margin: 0.85rem 0 0.35rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #EFBF04;
   font-weight: 600;
 }
+
+.auth-form label:first-child { margin-top: 0; }
 
 .auth-form input[type="text"],
 .auth-form input[type="email"],
 .auth-form input[type="password"],
 .auth-form select {
   width: 100%;
-  padding: 0.55rem 0.7rem;
+  padding: 0.7rem 0.9rem;
+  font-family: 'GFS Neohellenic', serif;
+  font-size: 1rem;
+  color: #1E1E1E;
+  background: #faf4e6;
+  border: 1px solid rgba(212, 175, 55, 0.5);
   border-radius: 6px;
-  border: 1px solid #ccc;
-  margin-bottom: 0.7rem;
-  font-family: inherit;
-  font-size: 0.95rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.auth-form input[type="text"]::placeholder,
+.auth-form input[type="email"]::placeholder,
+.auth-form input[type="password"]::placeholder {
+  color: #8a7d5a;
+  font-style: italic;
+}
+
+.auth-form input:focus,
+.auth-form select:focus {
+  outline: none;
+  border-color: #EFBF04;
+  box-shadow: 0 0 0 2px rgba(239, 191, 4, 0.4);
 }
 
 .auth-form button[type="submit"] {
   width: 100%;
-  margin-top: 0.4rem;
-  padding: 0.6rem 1rem;
-  background-color: #EFBF04;
-  color: #000;
-  border: none;
-  border-radius: 6px;
+  margin-top: 1.4rem;
+  padding: 0.85rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid #EFBF04;
+  background: #EFBF04;
+  color: #1E1E1E;
+  font-family: 'Cinzel', serif;
   font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.1s;
+  transition: background 0.25s ease,
+              transform 0.15s ease,
+              box-shadow 0.25s ease;
 }
 
 .auth-form button[type="submit"]:hover {
-  background-color: #d9aa00;
-  transform: translateY(-1px);
+  background: #ffda3d;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(239, 191, 4, 0.35);
 }
 
 .auth-error {
-  color: darkred;
-  margin-top: 10px;
-  font-size: 0.9rem;
+  background: rgba(160, 30, 30, 0.85);
+  color: #fff;
+  padding: 0.7rem 1rem;
+  border-radius: 6px;
+  margin: 0 0 1rem;
+  font-family: 'GFS Neohellenic', serif;
+  font-size: 0.95rem;
+  text-align: left;
+  border: 1px solid rgba(255, 100, 100, 0.45);
+}
+
+.auth-error ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.auth-error li {
+  padding: 0.15rem 0;
 }
 
 .auth-helper {
-  margin-top: 25px;
-  font-size: 0.9rem;
-  font-family: sans-serif;
+  margin-top: 1.5rem;
+  font-family: 'GFS Neohellenic', serif;
+  font-size: 0.95rem;
+  color: #d8d0bf;
 }
 
 .auth-helper a {
-  color: #000;
-  text-decoration: underline;
+  color: #EFBF04;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid #EFBF04;
+  padding-bottom: 1px;
+  transition: color 0.25s ease, border-color 0.25s ease;
 }
 
-@media (max-width: 700px) {
-  .auth-page {
-    padding-top: 110px;
-    padding-inline: 1rem;
-    margin-bottom: 30px;
-  }
+.auth-helper a:hover {
+  color: #ffda3d;
+  border-color: #ffda3d;
+}
 
-  .profile-page-simple {
-    margin-top: 110px;
-    padding: 0 1rem;
-  }
+@media (max-width: 600px) {
+  .auth-page { padding-top: 6rem; padding-inline: 1rem; }
+  .auth-form { padding: 1.6rem 1.3rem; }
+  .auth-form::before { inset: 5px; }
 }

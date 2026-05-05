@@ -11,16 +11,24 @@ if ($slug === '') {
     exit;
 }
 
+// Detect whether the optional 'sources' column exists yet
+$hasSources = false;
+$colCheck = $conn->query("SHOW COLUMNS FROM myths LIKE 'sources'");
+if ($colCheck && $colCheck->num_rows > 0) { $hasSources = true; }
+
+$selectCols = $hasSources
+    ? "slug, title, category, short_description, full_text, main_characters, sources"
+    : "slug, title, category, short_description, full_text, main_characters";
+
 $stmt = $conn->prepare("
-    SELECT slug, title, category, short_description, full_text, main_characters
+    SELECT $selectCols
     FROM myths
     WHERE slug = ?
     LIMIT 1
 ");
 $stmt->bind_param('s', $slug);
 $stmt->execute();
-$result = $stmt->get_result();
-$myth = $result->fetch_assoc();
+$myth = $stmt->get_result()->fetch_assoc();
 $stmt->close();
 $conn->close();
 
@@ -58,7 +66,7 @@ if (!$myth) {
           $imagePath = "../img/myths/" . htmlspecialchars($myth['slug']) . ".png";
         ?>
         <div class="myth-detail-image">
-          <img src="<?= $imagePath; ?>" alt="<?= htmlspecialchars($myth['title']); ?>">
+          <img src="<?= $imagePath; ?>" alt="<?= htmlspecialchars($myth['title']); ?>" loading="lazy">
         </div>
         <div class="myth-detail-heading">
           <p class="myth-category-label">
@@ -80,10 +88,38 @@ if (!$myth) {
       <section class="myth-detail-body">
         <article class="myth-story-card">
           <h3>The Story</h3>
-          <p>
-            <?= nl2br(htmlspecialchars($myth['full_text'])); ?>
-          </p>
+          <?php
+            $textRaw = trim($myth['full_text'] ?? '');
+            $textRaw = str_replace(["\r\n", "\r"], "\n", $textRaw);
+            $paragraphs = preg_split('/\n\s*\n/', $textRaw);
+            foreach ($paragraphs as $i => $para) {
+                $clean = trim(preg_replace('/\s*\n\s*/', ' ', $para));
+                if ($clean === '') continue;
+                $cls = ($i === 0) ? ' class="myth-lead"' : '';
+                echo '<p' . $cls . '>' . htmlspecialchars($clean) . '</p>';
+            }
+          ?>
         </article>
+
+        <?php
+          $sourcesRaw = $hasSources && !empty($myth['sources']) ? trim($myth['sources']) : '';
+          if ($sourcesRaw !== ''):
+            $lines = preg_split('/\r\n|\r|\n/', $sourcesRaw);
+            $items = [];
+            foreach ($lines as $line) {
+                $line = trim($line);
+                if ($line !== '') $items[] = $line;
+            }
+        ?>
+          <aside class="myth-sources">
+            <h4>Ancient Sources</h4>
+            <ul>
+              <?php foreach ($items as $src): ?>
+                <li><?= htmlspecialchars($src); ?></li>
+              <?php endforeach; ?>
+            </ul>
+          </aside>
+        <?php endif; ?>
 
         <!-- Button row: Back + Favourite -->
         <div class="myth-buttons-row">

@@ -7,7 +7,7 @@ session_start();
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Browse all characters of Greek mythology — gods, titans, heroes, and monsters in the Olympus Archives." />
+    <meta name="description" content="Browse all characters of Greek mythology - gods, titans, heroes, and monsters in the Olympus Archives." />
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet" />
 
     <link rel="icon" type="image/x-icon" href="../img/favicon/favicon.ico">
@@ -33,16 +33,27 @@ session_start();
       <?php
         require '../sql/db.php';
 
-        function render_character_section(mysqli $conn, string $title, string $whereClause): void {
+        function render_character_section(mysqli $conn, string $title, array $types): void {
+            if (empty($types)) {
+                return;
+            }
+            $placeholders = implode(',', array_fill(0, count($types), '?'));
             $sql = "
                 SELECT slug, name, type, domain, symbol, short_description
                 FROM characters
-                WHERE $whereClause
+                WHERE type IN ($placeholders)
                 ORDER BY name
             ";
-            $result = $conn->query($sql);
+            $stmt = $conn->prepare($sql);
+            if (!$stmt) {
+                return;
+            }
+            $stmt->bind_param(str_repeat('s', count($types)), ...$types);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
             if (!$result || $result->num_rows === 0) {
+                $stmt->close();
                 return;
             }
             ?>
@@ -92,30 +103,31 @@ session_start();
               </div>
             </section>
             <?php
+            $stmt->close();
         }
 
         render_character_section(
           $conn,
           'Gods & Olympians',
-          "type IN ('Olympian God','Olympian Goddess','Underworld Goddess')"
+          ['Olympian God', 'Olympian Goddess', 'Underworld Goddess']
         );
 
         render_character_section(
           $conn,
           'Titans & Titanesses',
-          "type IN ('Titan','Titaness')"
+          ['Titan', 'Titaness']
         );
 
         render_character_section(
           $conn,
           'Heroes',
-          "type = 'Hero'"
+          ['Hero']
         );
 
         render_character_section(
           $conn,
           'Monsters',
-          "type = 'Monster'"
+          ['Monster']
         );
 
         $conn->close();

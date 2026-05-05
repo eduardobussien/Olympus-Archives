@@ -11,8 +11,17 @@ if ($slug === '') {
     exit;
 }
 
+// Detect whether the optional 'sources' column exists yet
+$hasSources = false;
+$colCheck = $conn->query("SHOW COLUMNS FROM characters LIKE 'sources'");
+if ($colCheck && $colCheck->num_rows > 0) { $hasSources = true; }
+
+$selectCols = $hasSources
+  ? "slug, name, type, domain, symbol, short_description, full_bio, sources"
+  : "slug, name, type, domain, symbol, short_description, full_bio";
+
 $stmt = $conn->prepare("
-    SELECT slug, name, type, domain, symbol, short_description, full_bio
+    SELECT $selectCols
     FROM characters
     WHERE slug = ?
     LIMIT 1
@@ -29,14 +38,14 @@ if (!$character) {
     exit;
 }
 
-// Pull up to 5 related characters of the same type (excluding current)
+// Pull up to 4 random related characters of the same type (excluding current)
 $related = [];
 $stmt = $conn->prepare("
     SELECT slug, name
     FROM characters
     WHERE type = ? AND slug <> ?
     ORDER BY RAND()
-    LIMIT 5
+    LIMIT 4
 ");
 $stmt->bind_param('ss', $character['type'], $slug);
 $stmt->execute();
@@ -65,7 +74,7 @@ if (!empty($character['short_description'])) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="<?= htmlspecialchars($tagline ?: $character['name'] . ' — a figure from Greek mythology.'); ?>" />
+    <meta name="description" content="<?= htmlspecialchars($tagline ?: $character['name'] . ' - a figure from Greek mythology.'); ?>" />
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet" />
 
     <link rel="icon" type="image/x-icon" href="../img/favicon/favicon.ico">
@@ -156,10 +165,8 @@ if (!empty($character['short_description'])) {
           <?php
             $bioRaw = trim($character['full_bio'] ?: $character['short_description'] ?: '');
             $bioRaw = str_replace(["\r\n", "\r"], "\n", $bioRaw);
-            // Split on blank lines = real paragraph breaks
             $paragraphs = preg_split('/\n\s*\n/', $bioRaw);
             foreach ($paragraphs as $i => $para) {
-                // Collapse single line breaks inside a paragraph into spaces
                 $clean = trim(preg_replace('/\s*\n\s*/', ' ', $para));
                 if ($clean === '') continue;
                 $cls = ($i === 0) ? ' class="bio-lead"' : '';
@@ -167,6 +174,28 @@ if (!empty($character['short_description'])) {
             }
           ?>
         </article>
+
+        <?php
+          $sourcesRaw = $hasSources && !empty($character['sources']) ? trim($character['sources']) : '';
+          if ($sourcesRaw !== ''):
+            // Each source separated by a newline OR by a semicolon
+            $lines = preg_split('/\r\n|\r|\n/', $sourcesRaw);
+            $items = [];
+            foreach ($lines as $line) {
+                $line = trim($line);
+                if ($line === '') continue;
+                $items[] = $line;
+            }
+        ?>
+          <aside class="char-sources">
+            <h4>Ancient Sources</h4>
+            <ul>
+              <?php foreach ($items as $src): ?>
+                <li><?= htmlspecialchars($src); ?></li>
+              <?php endforeach; ?>
+            </ul>
+          </aside>
+        <?php endif; ?>
       </section>
 
       <!-- RELATED CHARACTERS -->

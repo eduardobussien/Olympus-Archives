@@ -1,5 +1,5 @@
-<!-- template.php by Eduardo Bussien-->
- <?php
+<?php
+// contact.php by Eduardo Bussien
 session_start();
 ?>
 <!DOCTYPE html>
@@ -27,21 +27,26 @@ session_start();
       <section class="contact ">
         <h2>Contact Olympus Archives</h2>
         <p>Have a question, suggestion, or divine revelation? Send your message below... <br>The gods are listening!</p>
-  
-        <form id="contactForm">
+
+        <p class="contact-demo-note">
+          <em>Showcase note:</em> this form is part of a portfolio project.
+          Submissions are validated client-side and acknowledged on screen, but no message is delivered or stored.
+        </p>
+
+        <form id="contactForm" novalidate>
           <label for="name">Your Name</label>
-          <input type="text" id="name" name="name" placeholder="Enter your name...">
-  
+          <input type="text" id="name" name="name" placeholder="Enter your name..." autocomplete="name">
+
           <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="example@domain.com">
-  
+          <input type="email" id="email" name="email" placeholder="example@domain.com" autocomplete="email">
+
           <label for="message">Message</label>
           <textarea id="message" name="message" rows="6" placeholder="Type your message here..."></textarea>
-  
+
           <button type="submit">Send Message</button>
         </form>
-  
-        <p id="formResponse" style="display: none; font-weight: bold;"></p>
+
+        <p id="formResponse" role="status" aria-live="polite" style="display: none; font-weight: bold;"></p>
       </section>
 
       <section class="follow-us">

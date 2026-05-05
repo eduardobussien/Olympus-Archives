@@ -4,16 +4,13 @@ session_start();
 
 require __DIR__ . '/sql/db.php';
 
-$featuredMyth  = null;
-$featuredError = '';
+$featuredMyth = null;
 $charCount = 0;
 $mythCount = 0;
-$gameCount = 2; // which-god + trivia
+$gameCount = 3; // which-god + trivia + memory
 
 $res = $conn->query("SELECT slug, title, short_description FROM myths ORDER BY RAND() LIMIT 1");
-if ($res === false) {
-    $featuredError = "Myth query error: " . $conn->error;
-} else {
+if ($res) {
     $featuredMyth = $res->fetch_assoc();
 }
 
@@ -28,7 +25,7 @@ if ($res) { $mythCount = (int) $res->fetch_assoc()['c']; }
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Olympus Archives — a digital compendium of Greek mythology. Discover the gods, titans, heroes, and legends that shaped the ancient world." />
+    <meta name="description" content="Olympus Archives - a digital compendium of Greek mythology. Discover the gods, titans, heroes, and legends that shaped the ancient world." />
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet" />
 
     <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
@@ -50,7 +47,13 @@ if ($res) { $mythCount = (int) $res->fetch_assoc()['c']; }
           <h1 class="site-title"><a href="index.php">Olympus Archives</a></h1>
         </div>
 
-        <ul class="nav-links">
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+
+        <ul class="nav-links" id="primary-nav">
           <li><a href="index.php">Home</a></li>
 
           <li class="dropdown">
@@ -81,17 +84,43 @@ if ($res) { $mythCount = (int) $res->fetch_assoc()['c']; }
             <ul class="dropdown-content">
               <li><a href="html/which-god.php">Which God Are You?</a></li>
               <li><a href="html/trivia.php">Trivia Challenge</a></li>
+              <li><a href="html/memory.php">Memory of the Gods</a></li>
+              <hr>
+              <li><a href="html/games.php"><strong>View All</strong></a></li>
             </ul>
           </li>
         </ul>
 
         <div class="nav-right">
+          <div class="nav-search">
+            <button type="button" class="nav-search-toggle" aria-label="Search the archives" aria-expanded="false">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+                <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
+                <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <form class="nav-search-panel" action="html/search.php" method="get" role="search">
+              <input
+                type="text"
+                name="q"
+                placeholder="Search gods, myths, heroes..."
+                autocomplete="off"
+                aria-label="Search query"
+              />
+              <button type="submit" aria-label="Submit search">
+                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">
+                  <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
+                  <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </form>
+          </div>
+
           <div class="dropdown more-dropdown">
             <a href="#">More ▾</a>
             <ul class="dropdown-content">
               <li><a href="html/about.php">About</a></li>
               <li><a href="html/contact.php">Contact</a></li>
-              <li><a href="html/tech.php">Tech Used</a></li>
             </ul>
           </div>
 
@@ -146,9 +175,8 @@ if ($res) { $mythCount = (int) $res->fetch_assoc()['c']; }
 
       <!-- INTRO BAND -->
       <section class="intro-band">
-        <span class="ornament" aria-hidden="true">❦</span>
         <p class="intro-quote">
-          “The wonders of mythology live with us still — in art, in language, and in story.”
+          “The wonders of mythology live with us still - in art, in language, and in story.”
         </p>
       </section>
 
@@ -247,7 +275,6 @@ if ($res) { $mythCount = (int) $res->fetch_assoc()['c']; }
       <!-- ABOUT -->
       <section class="about-preview-v2">
         <div class="about-inner">
-          <span class="ornament" aria-hidden="true">❦</span>
           <h2>About Olympus Archives</h2>
           <p>
             A digital compendium of Greek mythology blending art, history, and storytelling.

@@ -10,8 +10,6 @@ if (!isset($_SESSION['username'], $_SESSION['user_id'])) {
 
 $userId = (int)$_SESSION['user_id'];
 
-$userId = (int)$_SESSION['user_id'];
-
 $stmt = $conn->prepare("
     SELECT profile_pic, favorite_character, favorite_myth
     FROM users
@@ -90,14 +88,16 @@ $favoriteMyth      = $_SESSION['favorite_myth'] ?? '';
     <?php include 'nav.php'; ?>
 
     <main class="profile-page-simple">
+      <span class="profile-eyebrow">Your Account</span>
+      <h1>Profile</h1>
 
       <div class="profile-layout">
-        <div class="profile-avatar-large fade-up fade-delay-1">
-          <img src="<?php echo htmlspecialchars($avatarPath); ?>" alt="Profile avatar">
+        <div class="profile-avatar-large">
+          <img src="<?php echo htmlspecialchars($avatarPath); ?>" alt="Profile avatar" loading="lazy">
         </div>
 
         <!-- Card with info + favorites + settings -->
-        <section class="profile-card fade-up fade-delay-1">
+        <section class="profile-card">
           <h2><?php echo htmlspecialchars($username); ?></h2>
           <p class="profile-username-simple">@<?php echo htmlspecialchars($username); ?></p>
           <p class="profile-joined-simple">Joined December 2025</p>

@@ -4,18 +4,21 @@ session_start();
 require '../sql/db.php';
 
 $gods = [];
-$sql = "
+$listStmt = $conn->prepare("
     SELECT slug, name, type, domain, short_description
     FROM characters
-    WHERE type LIKE '%God%' OR type LIKE '%Goddess%'
+    WHERE type LIKE ? OR type LIKE ?
     ORDER BY name
-";
-$result = $conn->query($sql);
-if ($result) {
-    while ($row = $result->fetch_assoc()) {
-        $gods[] = $row;
-    }
+");
+$godPattern     = '%God%';
+$goddessPattern = '%Goddess%';
+$listStmt->bind_param('ss', $godPattern, $goddessPattern);
+$listStmt->execute();
+$result = $listStmt->get_result();
+while ($row = $result->fetch_assoc()) {
+    $gods[] = $row;
 }
+$listStmt->close();
 
 if (empty($gods)) {
     $conn->close();

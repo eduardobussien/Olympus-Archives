@@ -85,25 +85,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php include 'nav.php'; ?> 
 
         <main class="auth-page">
-            <h2>Log In</h2>
+            <span class="auth-eyebrow">Welcome Back</span>
+            <h2>Enter the Archives</h2>
+            <p class="auth-intro">Log in to save your favorite gods and myths.</p>
 
             <?php if (!empty($error)): ?>
             <p class="auth-error"><?php echo htmlspecialchars($error); ?></p>
             <?php endif; ?>
 
             <form method="post" action="login.php" class="auth-form">
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Your username">
 
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Your password">
 
-            <button type="submit">Log In</button>
+                <button type="submit">Log In</button>
             </form>
 
             <p class="auth-helper">
-            Don't have an account?
-            <a href="register.php">Register here</a>.
+                Don't have an account?
+                <a href="register.php">Register here</a>.
             </p>
         </main>
 

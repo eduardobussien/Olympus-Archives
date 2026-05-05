@@ -104,7 +104,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php include 'nav.php'; ?> 
 
     <main class="auth-page">
+        <span class="auth-eyebrow">Join the Archive</span>
         <h2>Create Your Account</h2>
+        <p class="auth-intro">Step into Olympus and begin your journey.</p>
 
         <?php if (!empty($errors)): ?>
             <div class="auth-error">

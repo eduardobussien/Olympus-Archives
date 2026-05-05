@@ -4,18 +4,20 @@ session_start();
 require '../sql/db.php';
 
 $titans = [];
-$sql = "
+$listStmt = $conn->prepare("
     SELECT slug, name, type, domain, short_description
     FROM characters
-    WHERE type LIKE '%Titan%'
+    WHERE type LIKE ?
     ORDER BY name
-";
-$result = $conn->query($sql);
-if ($result) {
-    while ($row = $result->fetch_assoc()) {
-        $titans[] = $row;
-    }
+");
+$titanPattern = '%Titan%';
+$listStmt->bind_param('s', $titanPattern);
+$listStmt->execute();
+$result = $listStmt->get_result();
+while ($row = $result->fetch_assoc()) {
+    $titans[] = $row;
 }
+$listStmt->close();
 
 if (empty($titans)) {
     $conn->close();

@@ -1,0 +1,32 @@
+# Olympus Archives - Apache config
+
+# Custom error pages
+ErrorDocument 404 /olympus/html/404.php
+
+# Disable directory listing
+Options -Indexes
+
+# Default index files
+DirectoryIndex index.php index.html
+
+# Disable showing the server signature
+ServerSignature Off
+
+# === Force-revalidate CSS / JS so design tweaks always show up ===
+# Browsers cache stylesheets aggressively. With this, every page load
+# revalidates the file with the server (304 if unchanged, 200 if updated).
+# We layer two modules in case one isn't enabled in the current Apache build.
+<IfModule mod_headers.c>
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 0 seconds"
+    ExpiresByType application/javascript "access plus 0 seconds"
+    ExpiresByType text/javascript "access plus 0 seconds"
+</IfModule>

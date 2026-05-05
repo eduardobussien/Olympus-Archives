@@ -98,7 +98,7 @@ $conn->close();
             ?>
             <div class="myth-highlight-card">
               <div class="myth-highlight-image">
-                <img src="<?= $imagePath; ?>" alt="<?= htmlspecialchars($currentMyth['title']); ?>">
+                <img src="<?= $imagePath; ?>" alt="<?= htmlspecialchars($currentMyth['title']); ?>" loading="lazy">
               </div>
 
               <div class="myth-highlight-content fade-up fade-delay-2">
@@ -152,9 +152,10 @@ $conn->close();
                   href="myths.php?slug=<?= urlencode($myth['slug']); ?><?= $category ? '&category=' . urlencode($category) : ''; ?>"
                   class="myth-scroll-item <?= $isActive ? 'active' : '' ?>"
                 >
-                  <img 
+                  <img
                     src="../img/myths/<?= htmlspecialchars($myth['slug']); ?>.png"
                     alt="<?= htmlspecialchars($myth['title']); ?>"
+                    loading="lazy"
                   >
                   <p><?= htmlspecialchars($myth['title']); ?></p>
                 </a>

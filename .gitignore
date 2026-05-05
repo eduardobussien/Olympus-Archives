@@ -12,6 +12,7 @@ desktop.ini
 
 # Local tooling / editor caches
 .claude/
+CLAUDE.md
 .cursor/
 .copilot/
 .aider*
@@ -32,6 +33,7 @@ composer.lock
 .env.*
 *.local
 db.local.php
+sql/config.local.php
 
 # Database dumps and backups
 *.sql.bak

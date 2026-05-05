@@ -4,18 +4,20 @@ session_start();
 require '../sql/db.php';
 
 $monsters = [];
-$sql = "
+$listStmt = $conn->prepare("
     SELECT slug, name, type, domain, short_description
     FROM characters
-    WHERE type = 'Monster'
+    WHERE type = ?
     ORDER BY name
-";
-$result = $conn->query($sql);
-if ($result) {
-    while ($row = $result->fetch_assoc()) {
-        $monsters[] = $row;
-    }
+");
+$monsterType = 'Monster';
+$listStmt->bind_param('s', $monsterType);
+$listStmt->execute();
+$result = $listStmt->get_result();
+while ($row = $result->fetch_assoc()) {
+    $monsters[] = $row;
 }
+$listStmt->close();
 
 if (empty($monsters)) {
     $conn->close();
